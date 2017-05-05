@@ -32,7 +32,7 @@ public class PeristrephicCubeDecoy extends CubeDecoy{
     @Override
     public boolean kill(Flying flying){
         int x = getX() - flying.getX(), y = getY() - flying.getY(), a = flying.getA();
-        Flying fly = new Flying(flying.getA(),(int) ((x + a/2)*cos(angle) - (y + a/2)*sin(angle)) - a/2 + getX(),
+        Flying fly = new Flying(flying.getA(),(int) ((x + a/2)*cos(angle) - (y + a/2)*sin(angle)) + getX(),
                 (int) ((x + a/2)*sin(angle) + (y + a/2)*cos(angle)) - a/2 + getY(), Color.white, 0,0);
         return super.kill(fly);
     }

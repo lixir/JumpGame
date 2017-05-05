@@ -2,6 +2,8 @@ package gameObjects;
 
 import org.junit.Test;
 
+import java.awt.Color;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +13,7 @@ public class DecoyTest {
 
     @Test
     public void killCubeDecoy() throws Exception {
-//        Decoy decoy = new CubeDecoy();
+        Decoy decoy = new CubeDecoy(50, 50,Color.BLACK, 50);
     }
 
     @Test
