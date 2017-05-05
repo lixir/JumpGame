@@ -12,7 +12,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import GameObjects.*;
+import gameObjects.*;
 
 /**
  * Created by lixir on 27.04.2017.

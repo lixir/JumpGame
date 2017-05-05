@@ -1,4 +1,4 @@
-package GameObjects;
+package gameObjects;
 
 import java.awt.*;
 import static java.lang.Math.abs;

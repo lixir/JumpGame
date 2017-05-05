@@ -1,4 +1,4 @@
-package GameObjects;
+package gameObjects;
 
 /**
  * Created by lixir on 27.04.2017.

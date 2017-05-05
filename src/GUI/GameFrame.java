@@ -1,6 +1,6 @@
 package GUI;
 
-import GameObjects.Flying;
+import gameObjects.Flying;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
