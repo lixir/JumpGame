@@ -8,7 +8,6 @@ import java.awt.*;
 public abstract class Decoy extends GameComponent{
     private int a;
     private Color color;
-    private boolean kill;
     private int b;
 
 
@@ -27,16 +26,10 @@ public abstract class Decoy extends GameComponent{
     public int getA(){return a;}
     public int getB(){return b;}
     public Color getColor(){return color;}
-    public boolean isKill() {
-        return kill;
-    }
 
     //setters
     protected void setA(int a){this.a = a;}
     protected void setB(int b){this.b = b;}
-    public void setKill(boolean kill) {
-        this.kill = kill;
-    }
     public void setColor(Color color){this.color = color;}
 
     public void motion(){
