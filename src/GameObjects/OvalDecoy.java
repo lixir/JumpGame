@@ -18,9 +18,10 @@ public class OvalDecoy extends Decoy{
     }
 
     @Override
-    public boolean kill(int y, int a){
+    public boolean kill(Flying flying){
 
-        return Math.abs(50 + a/2 - getX() - getA()/2) * Math.abs(50 + a/2 - getX() - getA()/2)
-                + Math.abs(y + a/2 - getY() - getA()/2) * Math.abs(y + a/2 - getY() - getA()/2) < (a + getA())*12;
+        return Math.abs(flying.getX() + flying.getA()/2 - getX() - getA()/2) * Math.abs(flying.getY() + flying.getA()/2
+                - getX() - getA()/2) + Math.abs(flying.getY() + flying.getA()/2 - getY() - getA()/2) * Math.abs(flying.getY()
+                + flying.getA()/2 - getY() - getA()/2) < (flying.getA() + getA())*12;
     }
 }

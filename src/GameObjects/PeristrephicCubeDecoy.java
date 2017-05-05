@@ -26,7 +26,7 @@ public class PeristrephicCubeDecoy extends Decoy{
     }
 
     @Override
-    public boolean kill(int y, int a){
+    public boolean kill(Flying flying){
         return false;
     }
 }

@@ -4,8 +4,8 @@ package GameObjects;
  * Created by lixir on 27.04.2017.
  */
 abstract class GameComponent implements GameObject{
-    int x;
-    int y;
+    protected int x;
+    protected int y;
     static int speed = 10;
 
     public GameComponent(int x, int y){

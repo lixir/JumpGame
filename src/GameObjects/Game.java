@@ -32,7 +32,7 @@ public class Game {
         if (click) flying.motion(clickY < flying.getY());
         for (Decoy decoy : decoys) {
             decoy.motion();
-            kill = kill || decoy.kill(flying.getY(), flying.getA());
+            kill = kill || decoy.kill(flying);
         }
         this.kill = kill;
 

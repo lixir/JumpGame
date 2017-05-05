@@ -36,7 +36,7 @@ public abstract class Decoy extends GameComponent{
         x-=speed;
     }
 
-    abstract public boolean kill(int y, int a);
+    abstract public boolean kill(Flying flying);
 
     abstract public void paint(Graphics g);
 
