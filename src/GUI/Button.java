@@ -1,11 +1,11 @@
-package GameObjects;
+package GUI;
 
 import java.awt.*;
 
 /**
  * Created by lixir on 02.05.2017.
  */
-public class Button implements GameObject {
+public class Button{
     private int x, y, a, b;
     private String text;
 

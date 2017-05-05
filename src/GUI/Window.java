@@ -1,4 +1,4 @@
-package GameObjects;
+package GUI;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 /**
  * Created by lixir on 02.05.2017.
  */
-abstract public class Window implements GameObject {
+abstract public class Window {
     private final int x, y, a, b;
     private String button1Text, button2Text, message;
     private Button button1, button2;

@@ -18,50 +18,38 @@ import GameObjects.*;
  * Created by lixir on 27.04.2017.
  */
 public class GamePanel extends JPanel {
-    private int checker = -1, up, result = 0;
+    private int up, result;
+    private final int height, width;
     private List<Decoy> decoys = new ArrayList<>();
     private Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE,
             Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
-    private final Flying flying;
-    private double angle = 0;
+    private Flying flying;
     private boolean mouse = false, kill = false;
     private Window window = null;
+    private final Game game;
 
 
-    public GamePanel() {
-        flying = new Flying(30, 50, 100, Color.YELLOW, 50, 300);
-
+    public GamePanel(Flying fly,int height, int width) {
+        flying = fly;
+        this.height = height;
+        this.width = width;
+        game = new Game(flying);
         setBackground(Color.DARK_GRAY);
+
         ActionListener timerListener = e -> {
             if (!kill) {
-                if (mouse) flying.motion(up < flying.getY());
-                for (Decoy decoy : decoys) {
-                    decoy.motion();
-                    kill = kill || decoy.kill(flying.getY(), flying.getA());
-                }
 
-                if (++checker % 20 == 0) {
-                    switch (checker % 3) {
-                        case 0:
-                            decoys.add(new CubeDecoy(800, (int) (Math.floor(Math.random() * 200) + 50),
-                                    colors[(int) (Math.random() * 11)], (int) (Math.random() * 20) + 30));
-                            break;
-                        case 1:
-                            decoys.add(new OvalDecoy(800, (int) (Math.floor(Math.random() * 200) + 50),
-                                    colors[(int) (Math.random() * 11)], (int) (Math.random() * 20) + 30));
-                            break;
-                        default:
-                            decoys.add(new PeristrephicCubeDecoy(800, (int) (Math.floor(Math.random() * 200) + 50),
-                                    colors[(int) (Math.random() * 11)], (int) (Math.random() * 20) + 30));
-                    }
-                    result++;
-                }
-                if (decoys.size() >= 1 && decoys.get(0).getX() == -50) decoys.remove(0);
+                game.step(mouse, up, kill);
+                decoys = game.getDecoys();
+                flying = game.getFlying();
+                result = game.getResult();
+                kill = game.getKill();
+
             }else {
-                window = new Window("Начать сначала", "Выход","Ваш результат: " + (result - 4), 0,0,700,400){
+                window = new Window("Начать сначала", "Выход","Ваш результат: " + result, 0,0,700,400){
                     public void onButton1(){
                         kill = false;
-                        result = 0;
+                        game.clearResult();
                         for (int i=0; i<decoys.size(); i++){
                             decoys.remove(i);
                         }
@@ -110,7 +98,7 @@ public class GamePanel extends JPanel {
 
      public void keyDown() {
          mouse = true;
-         up = 400;
+         up = flying.getBorderDown();
      }
 
      public void stop(){
@@ -122,8 +110,8 @@ public class GamePanel extends JPanel {
          super.paintComponent(g);
          if (!kill) {
              g.setColor(Color.WHITE);
-             g.drawLine(0, flying.getBorderUp(), 700, flying.getBorderUp());
-             g.drawLine(0, flying.getBorderDown() + flying.getA(), 700, flying.getBorderDown() + flying.getA());
+             g.drawLine(0, flying.getBorderUp(), width, flying.getBorderUp());
+             g.drawLine(0, flying.getBorderDown() + flying.getA(), width, flying.getBorderDown() + flying.getA());
              flying.paintFlying(g);
 
 
