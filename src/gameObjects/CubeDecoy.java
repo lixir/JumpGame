@@ -36,7 +36,7 @@ public class CubeDecoy extends Decoy {
             return abs(y - fly.getY()) < fly.getA();
         }
         //снизу
-        if (fly.getY() + fly.getA()/2 > y + getA()){
+        if (fly.getY() > y + getA()){
             //слева
             if (fly.getX() + fly.getA()/2 < x) return Math.abs((fly.getX() + fly.getA()/2 - x)*(fly.getX() + fly.getA()/2 - x))
                     + Math.abs((fly.getY() + fly.getA()/2 - y - getA())*(fly.getY() + fly.getA()/2 - y - getA())) <= fly.getA() * fly.getA()/4;

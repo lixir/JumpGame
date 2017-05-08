@@ -13,7 +13,7 @@ public class Game {
     private final List<Decoy> decoys = new ArrayList<>();
     private final Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA,
             Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
-    private boolean kill;
+    private boolean kill = false;
 
     public Game(Flying flying){
         this.flying = flying;
@@ -24,17 +24,17 @@ public class Game {
     public int getResult(){return result;}
     public boolean getKill(){return kill;}
 
+    public void setKill(boolean kill){this.kill = kill;}
     public void clearResult(){
         result = -4;
     }
 
-    public void step(boolean click, int clickY, boolean kill){
+    public void step(boolean click, int clickY){
         if (click) flying.motion(clickY < flying.getY());
         for (Decoy decoy : decoys) {
             decoy.motion();
             kill = kill || decoy.kill(flying);
         }
-        this.kill = kill;
 
         if (++checker % 20 == 0) {
             switch (checker % 3) {

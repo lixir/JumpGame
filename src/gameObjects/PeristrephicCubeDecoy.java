@@ -17,6 +17,8 @@ public class PeristrephicCubeDecoy extends CubeDecoy{
         super(x,y,color,a);
     }
 
+    public void setAngle(double angle){this.angle = angle;}
+
     @Override
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;

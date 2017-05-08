@@ -39,7 +39,7 @@ public class GamePanel extends JPanel {
         ActionListener timerListener = e -> {
             if (!kill) {
 
-                game.step(mouse, up, kill);
+                game.step(mouse, up);
                 decoys = game.getDecoys();
                 flying = game.getFlying();
                 result = game.getResult();
@@ -49,6 +49,7 @@ public class GamePanel extends JPanel {
                 window = new Window("Начать сначала", "Выход","Ваш результат: " + result, 0,0,700,400){
                     public void onButton1(){
                         kill = false;
+                        game.setKill(false);
                         game.clearResult();
                         for (int i=0; i<decoys.size(); i++){
                             decoys.remove(i);
