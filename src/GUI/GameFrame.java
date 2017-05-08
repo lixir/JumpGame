@@ -13,14 +13,12 @@ import java.awt.Color;
  */
 public class GameFrame extends JFrame {
     private GamePanel panel;
-    private final int aFlying = 30, xFlying = 50, yFlying = 100, borderUp = 50, borderDown = 300,
-        height = 400, width = 700;
-    private Color colorFlying = Color.YELLOW;
+    private final int height = 400, width = 700;
 
     public GameFrame(String s){
         super(s);
         setSize(width, height);
-        panel = new GamePanel(new Flying(aFlying, xFlying, yFlying, colorFlying, borderUp, borderDown), height, width);
+        panel = new GamePanel(height, width);
         this.setContentPane(panel);
 
         KeyListener keyListener = new KeyAdapter() {

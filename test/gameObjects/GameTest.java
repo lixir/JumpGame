@@ -1,6 +1,5 @@
 package gameObjects;
 
-import java.awt.Color;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,8 +8,7 @@ import static org.junit.Assert.*;
  * Created by lixir on 05.05.2017.
  */
 public class GameTest {
-    Flying flying = new Flying(40, 100,100, Color.BLACK, 1,500);
-    Game game = new Game(flying);
+    Game game = new Game();
 
     @Test
     public void step() throws Exception {

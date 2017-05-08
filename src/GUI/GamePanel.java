@@ -9,8 +9,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import gameObjects.*;
 
@@ -18,42 +16,31 @@ import gameObjects.*;
  * Created by lixir on 27.04.2017.
  */
 public class GamePanel extends JPanel {
-    private int up, result;
+    private int up;
     private final int height, width;
-    private List<Decoy> decoys = new ArrayList<>();
     private Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE,
             Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
-    private Flying flying;
     private boolean mouse = false, kill = false;
     private Window window = null;
-    private final Game game;
+    private Game game;
 
 
-    public GamePanel(Flying fly,int height, int width) {
-        flying = fly;
+    public GamePanel(int height, int width) {
         this.height = height;
         this.width = width;
-        game = new Game(flying);
+        game = new Game();
         setBackground(Color.DARK_GRAY);
 
         ActionListener timerListener = e -> {
             if (!kill) {
-
                 game.step(mouse, up);
-                decoys = game.getDecoys();
-                flying = game.getFlying();
-                result = game.getResult();
                 kill = game.getKill();
 
             }else {
-                window = new Window("Начать сначала", "Выход","Ваш результат: " + result, 0,0,700,400){
+                window = new Window("Начать сначала", "Выход","Ваш результат: " + game.getResult(), 0,0,700,400){
                     public void onButton1(){
                         kill = false;
-                        game.setKill(false);
-                        game.clearResult();
-                        for (int i=0; i<decoys.size(); i++){
-                            decoys.remove(i);
-                        }
+                        game = new Game();
                         removeMouseListener(this.mouseListener);
                         window = null;
                     }
@@ -99,7 +86,7 @@ public class GamePanel extends JPanel {
 
      public void keyDown() {
          mouse = true;
-         up = flying.getBorderDown();
+         up = height;
      }
 
      public void stop(){
@@ -111,12 +98,13 @@ public class GamePanel extends JPanel {
          super.paintComponent(g);
          if (!kill) {
              g.setColor(Color.WHITE);
-             g.drawLine(0, flying.getBorderUp(), width, flying.getBorderUp());
-             g.drawLine(0, flying.getBorderDown() + flying.getA(), width, flying.getBorderDown() + flying.getA());
-             flying.paintFlying(g);
+             g.drawLine(0, game.getFlying().getBorderUp(), width, game.getFlying().getBorderUp());
+             g.drawLine(0, game.getFlying().getBorderDown() + game.getFlying().getA(), width, game.getFlying().getBorderDown()
+                     + game.getFlying().getA());
+             game.getFlying().paintFlying(g);
 
 
-             for (Decoy decoy : decoys) {
+             for (Decoy decoy : game.getDecoys()) {
                  decoy.paint(g);
              }
          }
