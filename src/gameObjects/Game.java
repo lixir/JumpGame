@@ -48,6 +48,6 @@ public class Game {
             }
             result++;
         }
-        if (decoys.size() >= 1 && decoys.get(0).getX() == - decoys.get(0).getA()) decoys.remove(0);
+        if (decoys.size() >= 1 && decoys.get(0).getX() <= - decoys.get(0).getA()) decoys.remove(0);
     }
 }
