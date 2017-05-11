@@ -14,11 +14,15 @@ public class Game {
     private final Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA,
             Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
     private boolean kill = false;
-    private final int aFlying = 30, xFlying = 50, yFlying = 100, borderUp = 50, borderDown = 300, width = 700,
+    private final int aFlying = 30, xFlying = 50, yFlying = 100, borderUp = 50, borderDown, width,
             minDecoyA = 30, maxDecoyA = 50;
     private Color colorFlying = Color.YELLOW;
 
-    public Game(){ flying = new Flying(aFlying, xFlying, yFlying, colorFlying, borderUp, borderDown);}
+    public Game(int width, int height){
+        this.width = width;
+        borderDown = height - 100;
+        flying = new Flying(aFlying, xFlying, yFlying, colorFlying, borderUp, borderDown);
+    }
 
     public List<Decoy> getDecoys(){return decoys;}
     public Flying getFlying(){return flying;}

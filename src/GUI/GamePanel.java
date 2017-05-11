@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
     public GamePanel(int height, int width) {
         this.height = height;
         this.width = width;
-        game = new Game();
+        game = new Game(width, height);
         setBackground(Color.DARK_GRAY);
 
         ActionListener timerListener = e -> {
@@ -35,10 +35,10 @@ public class GamePanel extends JPanel {
                 kill = game.getKill();
 
             }else {
-                window = new Window("Начать сначала", "Выход","Ваш результат: " + game.getResult(), 0,0,700,400){
+                window = new Window("Начать сначала", "Выход","Ваш результат: " + game.getResult(), 0,0,width,height){
                     public void onButton1(){
                         kill = false;
-                        game = new Game();
+                        game = new Game(width, height);
                         removeMouseListener(this.mouseListener);
                         window = null;
                     }

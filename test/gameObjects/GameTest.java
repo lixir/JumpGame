@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
  * Created by lixir on 05.05.2017.
  */
 public class GameTest {
-    Game game = new Game();
+    Game game = new Game(700, 400);
 
     @Test
     public void step() throws Exception {
