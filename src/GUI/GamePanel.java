@@ -18,8 +18,6 @@ import gameObjects.*;
 public class GamePanel extends JPanel {
     private int up;
     private final int height, width;
-    private Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA, Color.ORANGE,
-            Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
     private boolean mouse = false, kill = false;
     private Window window = null;
     private Game game;
