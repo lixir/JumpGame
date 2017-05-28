@@ -27,7 +27,7 @@ public class GamePanel extends JPanel {
         this.height = height;
         this.width = width;
         game = new Game(width, height);
-        setBackground(Color.DARK_GRAY);
+        setBackground(new  Color(0,0,0,50));
 
         ActionListener timerListener = e -> {
             if (!kill) {

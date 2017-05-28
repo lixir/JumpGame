@@ -11,7 +11,7 @@ public class Game {
     private int checker = -1, result = -4;
     private final Flying flying;
     private final List<Decoy> decoys = new ArrayList<>();
-    private final Color[] colors = {Color.BLACK, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA,
+    private final Color[] colors = {Color.BLUE/*BLACK*/, Color.BLUE, Color.CYAN, Color.GRAY, Color.GREEN, Color.MAGENTA,
             Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
     private boolean kill = false;
     private final int aFlying = 30, xFlying = 50, yFlying = 100, borderUp = 50, borderDown, width,
